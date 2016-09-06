@@ -1,4 +1,4 @@
-<p>Raspberry Pi Autonomous Car</p>
+<p><strong>Raspberry Pi Autonomous Car</strong></p>
 
 <p>テストで上げています。</p>
 
