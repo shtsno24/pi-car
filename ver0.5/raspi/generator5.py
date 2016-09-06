@@ -69,28 +69,33 @@ while True:
             del stream, ret, temp_array 
             gc.collect()
 
+            #left
             if i1put == 'a':
                 servo.ChangeDutyCycle(left)
                 image_array = np.vstack((image_array, gray_array))
                 label_array = np.vstack((label_array, k[0]))
 
+            #right
             elif i1put == 'd':
                 servo.ChangeDutyCycle(right)
                 image_array = np.vstack((image_array, gray_array))
                 label_array = np.vstack((label_array, k[2]))
-        
+
+            #forward
             elif i1put == 'w':
                 servo.ChangeDutyCycle(center)
                 image_array = np.vstack((image_array, gray_array))
                 label_array = np.vstack((label_array, k[1]))
 
+            #stop
             elif i1put == 's':
                 servo.ChangeDutyCycle(center)
                 image_array = np.vstack((image_array, gray_array))
                 label_array = np.vstack((label_array, k[3]))
                 GPIO.output(24,False)
                 GPIO.output(23,False)
-        
+
+            #quit
             elif i1put == 'q':
                 break
 

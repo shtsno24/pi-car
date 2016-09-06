@@ -24,7 +24,7 @@ if os.path.exists(XML) == True:
     # load neural network
     network = NetworkReader.readFrom(XML)
 else:
-    # build neural network
+    # build new neural network
     network = buildNetwork(9600, 32, 32, 4, bias = True)
     
 
