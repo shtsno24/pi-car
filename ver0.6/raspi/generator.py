@@ -55,16 +55,10 @@ while True:
             stream = picamera.array.PiRGBArray(cam0)
             cam0.capture(stream, format = 'bgr', use_video_port = True)
 
-            #crop the image
+            #crop the image and grayscale
             frame,ret = np.split(stream.array, [60], axis = 0)
-            temp_array = frame.reshape(1,9600,3).astype(np.float32)
-
-            #gray scale
-            gray_array = temp_array.mean(axis = 2, dtype = int)
-            gray_array = gray_array.astype(np.float32)
-
-            del stream, ret, temp_array 
-            gc.collect()
+            gray_array = frame.reshape(1,9600,3).astype(np.float32).mean(axis = 2)
+            del frame, ret
 
             #left
             if i1put == 'a':
@@ -106,6 +100,7 @@ while True:
             time.sleep(sl)
             GPIO.output(24,False)
             GPIO.output(23,False)
+            del gray_array
 
     except:
         raw_input(">>")
