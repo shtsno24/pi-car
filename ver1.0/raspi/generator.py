@@ -15,7 +15,7 @@ cam0.resolution = (160, 128)
 cam0.color_effects = (128, 128)
 
 left = 5.0
-center = 6.2
+center = 6.3
 right = 7.6
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18,GPIO.OUT)
@@ -56,7 +56,7 @@ while True:
             cam0.capture(stream, format = 'yuv', use_video_port = True)
 
             #crop the image and choose Y channel
-            gray_array = stream.array[0:60, :, 0:1].reshape(1,9600),astype(np.float32)
+            gray_array = stream.array[0:60, :, 0:1].reshape(1,9600).astype(np.float32)
             del stream
 
             #left
