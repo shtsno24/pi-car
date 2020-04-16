@@ -26,7 +26,7 @@ def detect(x):
      return np.argmax(a)
     
 # load training data
-image_array = np.zeros((1, 9600))
+image_array = np.zeros((1, 38400))
 label_array = np.zeros((1, 4), 'float')
 
 with np.load(NPZ) as data:

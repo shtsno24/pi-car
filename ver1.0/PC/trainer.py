@@ -10,7 +10,7 @@ from pybrain.tools.xml import NetworkWriter,NetworkReader
 j = 0
 NPZ = 'data.npz'
 XML = 'net.xml'
-image_array = np.zeros((1, 9600))
+image_array = np.zeros((1, 38400))
 label_array = np.zeros((1, 4), 'float')
 
 #find NPZ file
@@ -23,10 +23,10 @@ if os.path.exists(NPZ) == False:
 if os.path.exists(XML) == True:
     network = NetworkReader.readFrom(XML)
 else:
-    network = buildNetwork(9600, 32, 32, 4, bias = True)
+    network = buildNetwork(38400, 32, 32, 4, bias = True)
     
 
-target = SupervisedDataSet(9600, 4)
+target = SupervisedDataSet(38400, 4)
 trainer = BackpropTrainer(network, target)
 
 

@@ -11,7 +11,7 @@ NPZ = 'data.npz'
 
 sl = 0.1
 cam0 = picamera.PiCamera()
-cam0.resolution = (160, 128)
+cam0.resolution = (320, 256)
 cam0.color_effects = (128, 128)
 
 left = 5.0
@@ -26,7 +26,7 @@ servo = GPIO.PWM(18,50)
 servo.start(0.0)
 
 
-image_array = np.zeros((1, 9600),'float')
+image_array = np.zeros((1, 38400),'float')
 label_array = np.zeros((1, 4),'float')
 k = np.zeros((4, 4), 'float')
 for i in range(4):
@@ -56,7 +56,7 @@ while True:
             cam0.capture(stream, format = 'yuv', use_video_port = True)
 
             #crop the image and choose Y channel
-            gray_array = stream.array[0:60, :, 0:1].reshape(1,9600).astype(np.float32)
+            gray_array = stream.array[0:120, :, 0:1].reshape(1,-1).astype(np.float32)
             del stream
 
             #left

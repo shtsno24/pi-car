@@ -12,7 +12,7 @@ from pybrain.tools.customxml import NetworkReader
 XML = 'net.xml' 
 
 cam0 = picamera.PiCamera()
-cam0.resolution = (160,128)
+cam0.resolution = (320,256)
 cam0.color_effects = (128, 128)
 cam0.framerate = 90
 
@@ -53,7 +53,7 @@ while True:
             cam0.capture(stream, format = 'yuv', use_video_port = True)
 
             #crop the image and choose Y channel
-            gray_array = stream.array[0:60, :, 0:1].reshape(9600).astype(np.float32)
+            gray_array = stream.array[0:120, :, 0:1].reshape(-1).astype(np.float32)
             del stream
 
             #steer
